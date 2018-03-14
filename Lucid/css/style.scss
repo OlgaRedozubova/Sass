@@ -1,0 +1,489 @@
+@import url(fonts.scss);
+//Colors
+$white: rgb(255, 255, 255);
+$whiteA: rgba(255, 255, 255, 0.302);
+$whiteNav: rgb(255, 254, 254);
+$blue: rgb(0, 142, 214);
+$grey: rgb(153, 153, 153);
+$black: rgb(26, 26, 26);
+$blackA: rgba(26, 26, 26, 0.3);
+$ligth-grey: rgb(237, 237, 237);
+$bg-about-short: rgb(242, 242, 242);
+
+$primary-color: $white;
+$color-title: $black;
+$color-text: $grey;
+
+
+//Background
+$bg_home: url(../img/banner.jpg) no-repeat center center;
+$bg_slider: url(../img/slider.jpg) no-repeat center center;
+$bg_map: url(../img/map.jpg) no-repeat center center;
+
+//fonts
+$font-quick: 'Quicksand', sans-serif;
+$font-source: 'Source Sans Pro', sans-serif;
+$font-soc: 'Socialico', sans-serif;
+
+
+$primary-font: $font-source;
+$secondary-font: $font-quick;
+
+//Spacing
+$mobile-space: 15px;
+$desktop-space: 35px;
+$marging-top: 20px;
+$space-top: 20px;
+$space-bottom: 10px;
+$space-s: 10px;
+$space-m: 15px;
+$space-l: 20px;
+$space-desc-s: 60px;
+$space-desc-m: 125px;
+$space-desc-l: 200px;
+
+$small-width: 480px;
+$mobile-width: 640px;
+$desktop-width: 1070px;
+
+$max-width: $desktop-width;
+
+$height-nav: 50px;
+$height-home: 657px;
+$height-contact: 700px;
+$height-map: 370px;
+
+$border: 1px solid $ligth-grey;
+$border-button: 1px solid $grey;
+
+
+@mixin respond-to ($media) {
+	@if $media == handhelds {
+		@media only screen and (max-width: $small-width) { @content;}
+	}
+	@else if $media == medium-screens {
+		@media only screen and (min-width: $small-width + 1 )
+		  and (max-width: $desktop-width - 1) { @content;}
+	}
+	@else if $media == wide-screens {
+		@media only screen and (mix-width: $desktop-width) { @content;}
+	}	
+}
+
+body {
+	font: 100% $primary-font;
+}
+.wrapper {
+  max-width: $max-width;
+	margin: 0 auto;
+	padding-left: $space-m;	
+	padding-right: $space-m;		
+}
+.wrap-flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
+	padding-top: 30px;
+}
+.wrap-center {
+	text-align: center;
+	padding-top: $space-desc-s;	
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding-top: $desktop-space;
+	//margin-bottom: $desktop-space;
+}
+
+
+.section-header {
+	font-size: 14px;
+	color: $blue;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: $space-s;		
+}
+.section-title {
+	font-size: 36px;
+	color: $color-title;
+	font-weight: bold;
+	margin-bottom: 35px;	
+}
+%p-title {
+	color: $color-title;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 1;			
+}
+
+%p-text {
+	font-size: 18px;
+	color: $color-text;
+	font-weight: bold;									
+}	
+
+.img-res {
+	margin: auto;
+}
+
+.button{
+	font-size: 14px;
+	color: $primary-color;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	margin-right: $space-l;
+	margin-top: $space-desc-s;
+	padding: $space-l 32px;
+	border: $border-button;
+	border-radius: 4px;
+	background: transparent;	
+&:hover {
+background-color: $blue;
+}					
+}
+
+
+.header {
+	background: $blackA;
+	//background: transparent;
+	position: fixed;
+	width: 100%;
+	.wrapper {
+		//margin-top: 28px;			
+		.logo {
+			display: flex;
+			@media (max-width:$small-width) {
+				flex-direction: column;
+			}				
+			a {
+				font: 100% $secondary-font;
+				font-weight: bold;
+				color: $white;
+				font-size: 24px;
+				text-transform: uppercase;
+				margin-right: 7px;
+			}
+			.logo-text{
+				font-size: 9px;
+				color: $whiteA;
+				text-transform: uppercase;
+				display: flex;
+				padding: 4px;
+				flex-direction: column;
+				p {		
+			}
+			@media (max-width:$small-width) {
+				flex-direction: row;
+			}					
+			}
+		}	
+		.header-nav {
+			min-height: $height-nav;
+//			margin-top: 28px;			
+			ul {
+				display: flex;
+				flex-wrap: wrap;					
+				li {
+						margin-right: $space-l;	
+					a {
+						font-size: 16px;
+						color:  $whiteNav;	
+					}	
+					&:last-child {
+						margin-right: 0;				
+					}			
+					&:hover	{}	
+				}
+			}
+		}					
+	}
+}
+
+.home {
+	background: $bg_home;
+	background-size: cover;
+	overflow: hidden;
+	height: $height-home;	
+  .section-left {
+		width: 50%;
+		margin-top: $space-desc-m;			
+		.section-header{			
+			text-align: left;				
+		}
+		.section-title{
+			font-size: 48px;
+			color: $primary-color;
+			font-weight: bold;
+			text-align: left;	
+			margin-top: $space-l;
+			margin-bottom: $space-s;
+		}
+		.section-text{
+			@extend %p-text;			
+			line-height: 1.429;
+			text-align: left;	
+			margin-top: 25px;
+			margin-bottom: $space-s;			  
+		}
+		.section-footer{
+			display: flex;
+			margin-bottom: $space-desc-m;
+		}
+	}
+	.section-right {
+		margin-top: 95px;
+	}
+	@include respond-to(handhelds) {height: auto}
+	@include respond-to(medium-screens) {height: auto}	
+	@include respond-to(wide-screens) {height: $height-home;}	
+}
+.features {
+	.box {
+		width: 22%;
+		margin-right: 30px;
+		text-align: center;	
+		.box-img {
+			margin-bottom: 0;
+		}	
+		.box-title {
+			font-size: 24px;
+			color: $color-title;
+			font-weight: bold;		
+			margin-top: $space-l;
+			margin-bottom: $space-s;								
+		}		
+		.box-text {
+			@extend %p-text;	
+			margin-bottom: 70px;									
+		}				
+	}
+	.wrapper:after{
+		position: absolute;
+		content: '';
+		width: 100%;
+		background: $ligth-grey;
+		height: 1px;			
+	}
+}
+
+.about-long {
+	margin-top: $space-l;
+	.wrap-img {
+		margin-top: 50px;
+	}
+	.content {
+		width: 50%;
+		margin-left: 8%;
+		.content-header{
+			@extend .section-header;
+			margin-top: 65px;	
+		}
+		.content-title {
+			@extend .section-title;
+			margin-bottom: 25px;
+			margin-top: 0;				
+		}
+		.content-text {
+			@extend %p-text;
+			margin: 30px 0;
+		}
+		li {
+			font-size: 18px;
+			padding-bottom: $space-s;
+			img {
+				padding-right: $space-s;
+			}
+		}
+	}	
+ }
+
+ .about-short {
+	 @extend .about-long;
+	 background-color: $bg-about-short;
+ }
+
+ .slider {
+	background: $bg_slider;
+	background-size: cover;	 
+	//.wrapper{
+//		text-align: center;
+		//padding-top: 65px;
+		.section-title {
+			color: $white;
+			margin-bottom: $space-s;
+		}
+		//.container {
+//			display: flex;
+			//justify-content: space-between;
+			//flex-wrap: wrap;		
+			.box {
+				width: 40%;
+				margin-right: 30px;
+				text-align: left;	
+				.box-text {
+					font-size: 24px;
+					color: $primary-color;
+					font-weight: 300;	
+					font-style: italic;
+					margin-top: $space-desc-s;
+					margin-bottom: 25px;					
+				}	
+				.person {
+					.person-img {
+						float: left;
+						margin-right: $space-l;
+						margin-bottom: $space-desc-l;						
+					}
+					.person-name {
+						font-size: 16px;
+						color: $primary-color;
+						padding-top: 12px;							
+						margin-top: $space-s;
+						margin-bottom: $space-s;								
+					}	
+					.person-staf {
+						font-size: 14px;
+						color: $primary-color;
+						font-weight: bold;	
+						text-transform: uppercase;	
+						margin-top: $space-s;
+						margin-bottom: $space-s;								
+					}						
+				}				
+			}	
+	//	}
+	//}
+ }
+ .download {
+	 background-color: $black;
+		.section-title {		
+			color: $primary-color;
+			padding: 65px 0;
+			margin-bottom: 0;
+		}
+		.section-footer{			
+			padding: 65px 0;
+			.button {
+				margin-left: $space-l;
+				margin-top: 0;
+				padding: $space-l $space-s;
+			}			
+		}
+ }
+.plans {
+	.box {
+		width: 23%;
+    border: $border;
+    margin-bottom: $space-desc-s;		
+	.box-header{
+		@extend %p-title;
+    font-size: 24px;	
+    border-bottom: $border;
+    padding: 18px;
+    
+    //margin-top: 0;
+    //margin-bottom: 0;
+	}
+	.box-price {
+		position: relative;		
+		border-bottom: $border;		
+		.price-title{
+			@extend %p-title;			
+			font-size: 60px;
+			margin: 0;
+			padding-top: 17px;						
+			span{
+				position: absolute;
+				font-size: 25px;
+				top: 21%;
+				left: 39%;
+			}
+		}
+		.price-footer{
+			@extend %p-text;			
+			line-height: 1;
+			margin-bottom: 22px;				
+		}		
+	}
+	.box-descript {
+		.box-text {
+			@extend %p-text;
+			padding: 40px $space-l;
+			margin: 0 0 $space-s;
+			a {
+				color: $blue;
+			}			
+		}
+		.button-order {
+			@extend .button;
+			color: $blue;
+			margin: 0 0 30px 0;
+		}		
+	}
+	&:hover{
+		.box-header {
+			color: $blue;
+		}
+		.box-price {
+			background-color: $blue;
+			.price-title, .price-footer{
+			color: $primary-color;
+			}
+		}
+		.button-order	{
+			color: $primary-color;
+			background-color: $blue;			
+		}
+	}
+}
+}
+.contact {
+	background-color: $ligth-grey;
+	position: relative;
+	height: $height-contact;	
+	.box{
+		width: 30%;
+		.box-text{
+			@extend %p-text;
+			margin: 0 0 $space-s;
+		}
+	}
+	@include respond-to(handhelds) {height: auto}
+	@include respond-to(medium-screens) {height: auto}	
+	@include respond-to(wide-screens) {height: $height-contact;}		
+}
+.map{
+	background: $bg_map;
+	background-size: cover;	
+	height: $height-map;
+	//@include respond-to(handhelds) {height: auto}
+	//@include respond-to(medium-screens) {height: auto}	
+	//@include respond-to(wide-screens) {height: $height-map;}	
+}
+.footer {
+	background-color: $black;
+	.wrap-center{
+		padding-top: $space-l;
+	.icons{
+		a{
+			font: 100% $font-soc;		
+			text-transform: uppercase;
+			font-size: 15px;
+			padding: $space-l;
+			color: #444348;
+			//margin-top: 20px;			
+			
+		}
+	}
+	.footer-header{
+		color: $color-text;
+		font-size: 14px;
+		padding-bottom: 30px;
+    //margin-bottom: 30px;		
+	}}
+}
+
